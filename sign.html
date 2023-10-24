@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+    margin:0%;
+    padding:0%;
+}
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url(lastsign.jpeg);
+    background-size: cover;
+}
+
+
+.box{
+
+   
+    width: 300px;
+    height: 350px;
+    background-color:rgb(52, 199, 228);
+    border-radius: 20px;
+    text-align: center;
+   
+}
+
+#button{
+    color: white;
+    background: dodgerblue;
+    padding:5px 5px 5px 5px;
+    border-radius: 20px;
+    width:95px;
+    height:35px;
+    font-size: 20px;
+}
+
+#button:hover{
+    color: black;
+    background:rgb(12, 83, 237);
+}
+
+#input{
+    margin-top: 35px;
+    padding:10px 10px 10px 10px;
+}
+
+#password{
+    padding:10px 10px 10px 10px;
+}
+#sin{
+    width: 60px;
+    height: 25px;
+    border: none;
+    border-radius: 3px ;
+    background-color: dodgerblue;
+    color: white;
+    font-size: 17px;
+    padding: 3px;
+}
+    </style>
+    <div class="container">
+        <div class="box">            
+            <br>
+            <h1>Sign-in</h1>
+            <br>
+            <input type="text" name="User Name" placeholder="Enter the username" id="input">
+            <br>
+            <br>
+            <br>
+            <input type="password" value="password" id="password" placeholder="Enter your password">
+            <br>
+            <br> 
+            <br>
+            <input type="button" name="submit" value="submit" placeholder="Submit" id="button" onclick="show()"> 
+            <!-- <button type="submit" onclick="show()">Submit</button> -->
+            <!-- <br>
+            <br>
+            <h4>Don't have an account ?</h4>
+            <br>
+            <a href="index.html"><input type="button" name="Sign in" value="Create" id="sin" ></a> -->
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function show(){
+            var show = "Sign in successfully...";
+           alert(show); 
+        }
+
+    
+    
+       
+    </script>
+</body>
+</html>

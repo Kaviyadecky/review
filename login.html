@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url(lastsign.jpeg);
+    background-size: cover;
+
+}
+#form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.1) ;
+    padding: 50px;
+    min-height: 95vh;
+    
+}
+
+.title{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+ .label{
+    display: block;
+    margin: 5px;
+ }
+
+#form div input{
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid #c4c4c4;
+    padding: 0 30px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);  
+
+}
+
+form > div{
+    position: relative;
+    margin-bottom: 15px;
+}
+
+input:focus{
+    border: 2 px solid #f2796e !important;
+}
+form > div > i {
+    position: absolute;
+    padding: 10px;
+    left: -5px;
+    top: 20px;
+
+    
+}
+.abc{
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+}
+.fail,.error{
+    color:red;
+}
+.success-icon{
+    color: green;
+}
+.success-icon{
+    opacity: 0;
+    display: none;
+}
+.fail{
+    opacity: 0;
+    display: none;
+}
+
+.error{
+    font-size: 14.5px;
+    margin-top: 5px;
+}
+.success-icon,.fail{
+    right: 0;
+    opacity: 0;
+}
+
+#submit-btn{
+    margin-top: 15px;
+    width: 100%;
+    height: 45px;
+    background-color: #f2796e;
+    border: 2px solid #f2796e;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.1s ease;
+}
+
+#submit-btn:hover{
+    opacity: 0.8;
+}
+
+.logdv{
+    top:-50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.logbtn{
+    width:50px;
+    padding: 5px;
+    background-color: #f2796e;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 10px;
+}
+    </style>
+    <div class="container">
+        <div>
+        <form id="form" >
+            <div class="title">Create your Account</div>
+            
+            <div>
+                <label for="username">Username</label>
+                <i class="fas fa-user" class="icon"></i>
+
+                <input type="text" name="username" id="username" placeholder="Enter your name"/>
+                
+                <div class="abc">
+                    <i class="fa-solid fa-circle-exclamation fail"></i>
+                <i class="fas fa-check-circle success-icon"></i>
+                </div>
+                <div class="error"></div>
+            </div>
+         
+            <div>
+                <label for="email">Email</label>
+                <i class="fa-solid fa-envelope" class="icon"></i>
+
+                <input type="email" name="eamil" id="email" placeholder="Enter your email"/> 
+
+                <div class="abc">
+                    <i class="fa-solid fa-circle-exclamation fail"></i>
+                    <i class="fas fa-check-circle success-icon"></i>
+                </div> 
+                <div class="error"></div>
+            </div>
+
+            <!-- Phone -->
+            <div>
+                <label for="phone">Phone number</label>
+                <i class="fa-solid fa-phone" class="icon"></i>
+
+                <input type="tel" name="text" id="text" placeholder="Enter your phone number"/> 
+
+                <div class="abc">
+                    <i class="fa-solid fa-circle-exclamation fail"></i>
+                    <i class="fas fa-check-circle success-icon"></i> 
+                </div>
+                <div class="error"></div>
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label for="password">Password</label>
+                <i class="fa-solid fa-lock" class="icon"></i>
+
+                <input type="password" name="password" id="password" placeholder="Enter your password"/> 
+
+                <div class="abc">
+                    <i class="fa-solid fa-circle-exclamation fail"></i>
+                    <i class="fas fa-check-circle success-icon"></i> 
+                </div>
+                <div class="error"></div>
+            </div>
+           <!-- Button -->
+          <button id="submit-btn" type="submit" onclick="show()">SUBMIT</button>
+          <br>
+        </form>
+      <script>
+        let id = (id)=> document.getElementById(id);
+
+let classes = (classes) => document.getElementsByClassName(classes);
+
+let username = id("username"),
+email = id("email"),
+phone = id("number"),
+password = id("password"),
+submitbtn = id("submit-btn");
+form = id("form"),
+
+errorMsg = classes("error"),    
+successIcon = classes("success-icon"),
+failureIcon = classes("fail");
+
+console.dir(successIcon);
+console.dir(failureIcon)
+
+let engine = (id,serial,message) => {
+    console.log(id,message,serial);
+    if (id.value.trim() === ""){
+        errorMsg[serial].innerHTML = message;
+        id.style.border = "2px solid red";
+
+        //icon
+        failureIcon[serial].style.opacity = "1";
+        successIcon[serial].style.opacity = "0";
+        return false;
+    }else{
+        errorMsg[serial].innerHTML = "";
+        id.style.border = "2px solid green";
+
+        //icon
+        failureIcon[serial].style.opacity = "0";
+        successIcon[serial].style.opacity = "1";
+        return true;
+    }
+}
+
+submitbtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+    // alert("hello");
+    let userv = engine(username, 0,"Enter the Username");
+    let em =engine(email, 1,"Enter the Email");
+    let ph =engine(phone,2,"Enter the Phone number");
+    let ps =engine(password, 3,"Enter the Password ");
+
+    // console.log({userv,em,ph,ps});
+
+    // if (userv&&em&&ph&&ps){
+    //     window.location.href="todo.html";
+    // }
+});
+
+
+function show(){
+    var show = "Successfully login...";
+    alert(show);
+}
+      </script>
+        
+    </div>
+    </div>
+
+</body>
+</html>
